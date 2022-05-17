@@ -1,0 +1,66 @@
+﻿.principal{
+    text-align: center
+}
+.titulos-blanco {
+    color:#fff;
+    font-weight:bold;
+}
+
+.titulos-negro {
+    color: #000;
+    font-weight: bold;
+}
+.center-container{
+    justify-content:center;
+}
+
+@media (min-width: 768px) {
+    .principal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .principal-seccion {
+        margin: 0 110px;
+    }
+}
+
+#foto {
+    width: 200px;
+    margin: 2rem 0;
+    border-radius: 50%;
+}
+
+.seccion-bienvenida {
+    margin: 5rem 0 10rem 0;
+    color: #fff;
+}
+
+.seccion-bienvenida h1{
+    margin-bottom: 4rem;
+}
+
+.seccion-bienvenida p{
+    font-family: sans-serif;
+    line-height: 1.5;
+    font-size: 1.25rem;
+}
+
+.cabecera {
+    font-weight:bold;
+}
+@media (min-width: 768px) {
+    .habilidades ul {
+        list-style: none;
+        padding-left: 0;
+    }
+}
+.habilidades{
+    justify-content: center;
+}
+.habilidades i {
+    color: #0d6efd;
+    font-size: 50px;
+}
+    
