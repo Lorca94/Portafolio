@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portafolio.Models;
+using Portafolio.Services;
 using System.Diagnostics;
 
 namespace Portafolio.Controllers
@@ -7,59 +8,44 @@ namespace Portafolio.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ISendGridService _sendGridService;
+        private readonly IProyectosRepository _repo;
+        public HomeController(ILogger<HomeController> logger, IProyectosRepository repo, ISendGridService sendGridService)
         {
             _logger = logger;
+            _repo = repo;
+            _sendGridService = sendGridService;
         }
 
         public IActionResult Index()
         {
-            List<ProyectoViewModel> proyectos = ObtenerProyectos().Take(3).ToList();
+            List<ProyectoViewModel> proyectos = _repo.ObtenerProyectos().Take(3).ToList();
             HomeIndexViewModel modelo = new HomeIndexViewModel() { Proyectos = proyectos };
             return View(modelo);
         }
 
-        private List<ProyectoViewModel> ObtenerProyectos()
+        public IActionResult Proyectos()
         {
-            return new List<ProyectoViewModel>()
-            {
-                new ProyectoViewModel()
-                {
-                    Titulo = "Proyecto 1",
-                    Descripcion = "Descripcion de proyecto, tecnologia usada",
-                    Link ="https://google.es",
-                    ImagenUrl = "https://josefacchin.com/wp-content/uploads/2017/09/bancos-imagenes-gratis.png"
-                },
-                new ProyectoViewModel()
-                {
-                    Titulo = "Proyecto 2",
-                    Descripcion = "Descripcion de proyecto, tecnologia usada",
-                    Link ="https://google.es",
-                    ImagenUrl = "https://josefacchin.com/wp-content/uploads/2017/09/bancos-imagenes-gratis.png"
-                },
-                new ProyectoViewModel()
-                {
-                    Titulo = "Proyecto 3",
-                    Descripcion = "Descripcion de proyecto, tecnologia usada",
-                    Link ="https://google.es",
-                    ImagenUrl = "https://josefacchin.com/wp-content/uploads/2017/09/bancos-imagenes-gratis.png"
-                },
-                new ProyectoViewModel()
-                {
-                    Titulo = "Proyecto 4",
-                    Descripcion = "Descripcion de proyecto, tecnologia usada",
-                    Link ="https://google.es",
-                    ImagenUrl = "https://josefacchin.com/wp-content/uploads/2017/09/bancos-imagenes-gratis.png"
-                },
-            };
+            List<ProyectoViewModel> proyectos = _repo.ObtenerProyectos().ToList();
+            return View(proyectos);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Contacto()
         {
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Contacto(ContactoViewModel contactoViewModel)
+        {
+            await _sendGridService.Enviar(contactoViewModel);
+            return RedirectToAction("MensajeAgradecimiento");
+        }
+
+        public IActionResult MensajeAgradecimiento()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
