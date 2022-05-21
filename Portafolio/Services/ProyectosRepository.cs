@@ -13,6 +13,7 @@ namespace Portafolio.Services
                     Titulo = "Proyecto 1",
                     Descripcion = "Descripcion de proyecto, tecnologia usada",
                     Link ="https://google.es",
+                    Github="https://github.com/lorca94",
                     ImagenUrl = "https://josefacchin.com/wp-content/uploads/2017/09/bancos-imagenes-gratis.png"
                 },
                 new ProyectoViewModel()
@@ -20,6 +21,7 @@ namespace Portafolio.Services
                     Titulo = "Proyecto 2",
                     Descripcion = "Descripcion de proyecto, tecnologia usada",
                     Link ="https://google.es",
+                    Github="https://github.com/lorca94",
                     ImagenUrl = "https://josefacchin.com/wp-content/uploads/2017/09/bancos-imagenes-gratis.png"
                 },
                 new ProyectoViewModel()
@@ -27,6 +29,7 @@ namespace Portafolio.Services
                     Titulo = "Proyecto 3",
                     Descripcion = "Descripcion de proyecto, tecnologia usada",
                     Link ="https://google.es",
+                    Github="https://github.com/lorca94",
                     ImagenUrl = "https://josefacchin.com/wp-content/uploads/2017/09/bancos-imagenes-gratis.png"
                 },
                 new ProyectoViewModel()
@@ -34,6 +37,7 @@ namespace Portafolio.Services
                     Titulo = "Proyecto 4",
                     Descripcion = "Descripcion de proyecto, tecnologia usada",
                     Link ="https://google.es",
+                    Github="https://github.com/lorca94",
                     ImagenUrl = "https://josefacchin.com/wp-content/uploads/2017/09/bancos-imagenes-gratis.png"
                 },
             };

@@ -1,24 +1,38 @@
-﻿.bg-color-principal {
+﻿.progress-reading {
+    height: 3px;
+    background-color: #0C6291;
+    width: 0;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+.bg-color-principal {
     background-color: #0C6291;
 }
+
 color-principal {
     color: #0C6291;
 }
 
-.principal{
+.principal {
     text-align: center
 }
+
 .titulos-blanco {
-    color:#fff;
-    font-weight:bold;
+    color: #fff;
+    font-weight: bold;
 }
 
 .titulos-negro {
     color: #000;
     font-weight: bold;
 }
-.center-container{
-    justify-content:center;
+
+.center-container {
+    justify-content: center;
 }
 
 @media (min-width: 768px) {
@@ -32,6 +46,7 @@ color-principal {
         margin: 0 110px;
     }
 }
+
 #foto {
     width: 200px;
     border-radius: 50%;
@@ -39,8 +54,7 @@ color-principal {
 
 @media (max-width: 768px) {
     #foto {
-        display: none;
-        
+        width: 150px;
     }
 }
 
@@ -50,44 +64,31 @@ color-principal {
     color: #fff;
 }
 
-.seccion-bienvenida h1{
-    margin-bottom: 4rem;
-}
+    .seccion-bienvenida h1 {
+        margin-bottom: 4rem;
+    }
 
-.seccion-bienvenida p{
-    font-family: sans-serif;
-    line-height: 1.5;
-    font-size: 1.25rem;
-}
+    .seccion-bienvenida p {
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-size: 1.25rem;
+    }
 
 .cabecera {
-    font-weight:bold;
+    font-weight: bold;
 }
+
 @media (min-width: 768px) {
-    .habilidades ul {
-        list-style: none;
-        padding-left: 0;
-    }
-}
-.habilidades{
-    justify-content: center;
-}
-.habilidades i {
-    color: #0d6efd;
-    font-size: 50px;
-}
-@media (min-width: 768px){
     .contacto {
         height: 89vh;
-        max-width: 970px;
         padding-top: 7rem;
     }
 }
-.contacto{
-    display:flex;
+
+.contacto {
+    display: flex;
     flex-direction: column;
-    justify-content:center;
-    max-width:970px;
+    justify-content: center;
     padding-top: 2rem;
 }
 
@@ -99,11 +100,14 @@ color-principal {
     height: 89vh;
 }
 
-.gracias-text{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.gracias-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+
+.container-habilidades {
 }
 
 .gracias-text-cont {
@@ -115,32 +119,107 @@ color-principal {
     box-shadow: inset 0px 0px 15px #B9C1CB, 0px 0px 5px #ADB8C4
 }
 
+
+
 .header {
     padding-top: 7rem;
 }
-@media (min-width: 768px){
+
+@media (min-width: 768px) {
     .header {
         position: fixed;
-        height: 100vh;
-        width: 25vw;
+        width: 260px;
+        height: 100%;
         top: 0;
         left: 0;
         padding-top: 7rem;
         z-index: 90;
         background-color: #f9f9f9;
     }
-    .btn-query{
-        display:none;
+
+    .btn-query {
+        display: none;
     }
+
     .main-header a {
         font-size: 24px;
     }
 
     .main-body {
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 75vw;
+        position: relative;
+        margin-left: 150px;
+        overflow: hidden;
         background-color: #f9f9f9;
     }
 }
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 5px auto;
+}
+
+.tarjeta-wrap {
+    margin: 10px;
+    -webkit-perspective: 800px;
+    perspective: 800px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+    .tarjeta-wrap:hover .tarjeta {
+        transform: rotateY(180deg);
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+.tarjeta {
+    width: 300px;
+    height: 350px;
+    background: #fff;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: .7s ease;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 5px 5px 0 gray;
+}
+
+    .tarjeta i {
+        color: #0d6efd;
+        font-size: 50px;
+    }
+
+.frontal, .trasera {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 0 15px;
+}
+
+.frontal {
+    /* Soluciona los problemas de backface visibility en firefox */
+    transform: rotateY(0deg);
+    line-height: 150px;
+}
+
+.trasera {
+    /* Soluciona los problemas de backface visibility en firefox */
+    transform: rotateY(180deg);
+}
+    .trasera ul{
+        text-align: center;
+        list-style: none;
+        padding-left: 0;
+    }
